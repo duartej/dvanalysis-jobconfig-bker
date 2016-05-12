@@ -13,10 +13,16 @@ being
 
 and each commit should be provided as: 
 ```
-Subject in one concise line. RELEASE: XXXXX
+Subject in one concise line. RELEASE: XXXXX  [NEED DEP]
 
 BODY (if applies), more extense explanation about the commit, focused in
 the what and why of the commit
+
+DEP: DEP1, DEP2, ...
 ``` 
-As a commit per file is mandatory, therefore
+A commit per file is mandatory. It can be one-line commit if the executable can run out-of-the-box
+with the file and the particular release pointed out. If not, i.e., if it needs extra packages, then the 
+subject should contain the **[NEED DEP]** word and the commit BODY is needed. The dependecies are listed
+at the end of the BODY in a comma-separated list
   * *RELEASE* is the recommended (or minimum) EXECUTABLE release needed by the file
+  * *DEP:* comma-separated list of dependencies needed by the EXECUTABLE to run the filee in the RELEASE
