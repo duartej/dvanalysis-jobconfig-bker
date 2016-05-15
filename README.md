@@ -5,7 +5,7 @@ The package is intended to bookkeep the different files related with the process
 
 Each file is intended to follow the following conventions:
 ```
-FILENAME.EXTENSION_EXECUTABLE
+EXECUTABLE/FILENAME.EXTENSION
 ``` 
 being 
   * *FILENAME.EXTENSION*: the file name as is usually used along with its extension (or suffix)
@@ -16,7 +16,7 @@ and each commit should be provided as:
 Subject in one concise line. RELEASE: XXXXX  [NEED DEP]
 
 BODY (if applies), more extense explanation about the commit, focused in
-the what and why of the commit
+the what and the why of the commit
 
 DEP: DEP1, DEP2, ...
 ``` 
