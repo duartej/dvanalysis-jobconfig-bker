@@ -5,13 +5,14 @@
 # MC-truth stuff
 if not globalflags.DataSource() == 'data':
     # -- create MC-truth particle info
-    from McParticleAlgs.JobOptCfg import McAodBuilder
-    topSequence.insert(0,McAodBuilder())
-    from xAODTruthCnv.xAODTruthCnvConf import xAODMaker__xAODTruthCnvAlg
-    GEN_AOD2xAOD = xAODMaker__xAODTruthCnvAlg("GEN_AOD2xAOD")
-    GEN_AOD2xAOD.AODContainerName = "TruthEvent"
-    GEN_AOD2xAOD.WriteInTimePileUpTruth = True
-    topSequence.insert(1,GEN_AOD2xAOD)
+    ## Seems not needed anymore...
+    ##from McParticleAlgs.JobOptCfg import McAodBuilder
+    ##topSequence.insert(0,McAodBuilder())
+    ##from xAODTruthCnv.xAODTruthCnvConf import xAODMaker__xAODTruthCnvAlg
+    ##GEN_AOD2xAOD = xAODMaker__xAODTruthCnvAlg("GEN_AOD2xAOD")
+    ##GEN_AOD2xAOD.AODContainerName = "TruthEvent"
+    ##GEN_AOD2xAOD.WriteInTimePileUpTruth = True
+    ##topSequence.insert(1,GEN_AOD2xAOD)
     # Fix the bug comented in https://its.cern.ch/jira/browse/ATLASRECTS-2062
     topSequence.GEN_AOD2xAOD.ForceRerun=True
 

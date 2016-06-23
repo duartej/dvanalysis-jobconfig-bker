@@ -1,8 +1,8 @@
 Index: python/InDetJobProperties.py
 ===================================================================
---- python/InDetJobProperties.py	(revision 744402)
+--- python/InDetJobProperties.py	(revision 757309)
 +++ python/InDetJobProperties.py	(working copy)
-@@ -1429,7 +1429,7 @@
+@@ -1435,7 +1435,7 @@
         self.checkThenSet(self.useExistingTracksAsInput, True              )
         self.checkThenSet(self.preProcessing           , True              )
         self.checkThenSet(self.doSpacePointFormation   , True              )
@@ -11,7 +11,7 @@ Index: python/InDetJobProperties.py
         # --- enable prim/sec vertexing ?? Probably yes, but a DV-vertexing
         # --- instead primary vertex setup 
         self.checkThenSet(self.doVertexFinding         , False             )
-@@ -1442,8 +1442,8 @@
+@@ -1448,8 +1448,8 @@
         self.checkThenSet(self.doV0Finder              , False             )
         self.checkThenSet(self.doSimpleV0Finder        , False             )
         self.checkThenSet(self.doConversions           , False             )
@@ -22,7 +22,7 @@ Index: python/InDetJobProperties.py
         self.checkThenSet(self.doTrackSegmentsPixel    , False             )
         self.checkThenSet(self.doTrackSegmentsSCT      , False             )
         self.checkThenSet(self.doTrackSegmentsTRT      , False             )
-@@ -1601,6 +1601,8 @@
+@@ -1607,6 +1607,8 @@
        # --------------------------------------------------------------------
        # ---- Large-d0 re-tracking setup
        # --------------------------------------------------------------------      
@@ -31,13 +31,13 @@ Index: python/InDetJobProperties.py
        if self.doDVRetracking():
            self.setDVRetracking()
        
-@@ -1627,6 +1629,9 @@
+@@ -1633,6 +1635,9 @@
        # new forward tracklets
        self.doForwardTracks = self.doForwardTracks() and self.doNewTracking()
        #
 +      # no Large radius tracking if pixel or sct off (new tracking = inside out only)
 +      self.doLargeD0 = self.doLargeD0() and (DetFlags.haveRIO.pixel_on() or DetFlags.haveRIO.SCT_on())
-+      
++      #
        # no BeamGas tracking if no new tracking before (but only if beamtype is not single beam!)      
        if (jobproperties.Beam.beamType()!="singlebeam"):
          self.doBeamGas     = self.doBeamGas() and self.doNewTracking()
